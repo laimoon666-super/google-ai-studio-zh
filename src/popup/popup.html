@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AI Studio 汉化</title>
+    <link rel="stylesheet" href="../ui/theme.css" />
+    <link rel="stylesheet" href="popup.css" />
+    <script defer src="../dict/_common.js"></script>
+    <script defer src="../dict/playground.js"></script>
+    <script defer src="../dict/build.js"></script>
+    <script defer src="../dict/manage.js"></script>
+    <script defer src="../ui/mock.js"></script>
+    <script defer src="popup.js"></script>
+  </head>
+  <body class="popup-body">
+    <header class="p-header">
+      <div class="p-brand">
+        <div class="p-logo" aria-hidden="true">汉</div>
+        <div class="p-brand__text">
+          <h1 class="p-title">AI Studio 汉化</h1>
+          <span class="p-version" id="appVersion">v1.0.0</span>
+        </div>
+      </div>
+      <button
+        class="aiz-switch"
+        id="masterSwitch"
+        type="button"
+        role="switch"
+        aria-checked="true"
+        aria-label="汉化总开关"
+      >
+        <span class="aiz-switch__knob" aria-hidden="true"></span>
+      </button>
+    </header>
+
+    <main class="p-main aiz-scroll">
+      <section class="aiz-card aiz-card--raised p-status" aria-labelledby="pageStatusTitle">
+        <div class="p-status__head">
+          <div class="p-host">
+            <span class="p-host__dot" id="hostDot" aria-hidden="true"></span>
+            <span class="p-host__name" id="hostName">正在检测页面…</span>
+          </div>
+          <span class="aiz-badge aiz-badge--ok" id="engineBadge">已启用</span>
+        </div>
+        <h2 class="aiz-sr-only" id="pageStatusTitle">当前页面状态</h2>
+        <div class="p-metrics">
+          <div class="p-metric">
+            <strong id="metricTranslated">—</strong>
+            <span>已翻译条目</span>
+          </div>
+          <div class="p-metric">
+            <strong id="metricUnmatched">—</strong>
+            <span>未汉化候选</span>
+          </div>
+          <div class="p-metric">
+            <strong id="metricDict">—</strong>
+            <span>词典词条</span>
+          </div>
+        </div>
+        <p class="p-status__note" id="pageNote" hidden></p>
+        <p class="p-status__time" id="statusTime" hidden></p>
+      </section>
+
+      <section class="aiz-card p-quick" aria-labelledby="quickTitle">
+        <h2 class="p-section-title" id="quickTitle">快捷开关</h2>
+
+        <div class="p-toggle">
+          <div class="p-toggle__text">
+            <span class="p-toggle__label">强制英文界面</span>
+            <span class="p-toggle__desc">让 AI Studio 以英文渲染，保证词典命中</span>
+          </div>
+          <button
+            class="aiz-switch"
+            type="button"
+            role="switch"
+            aria-checked="true"
+            aria-label="强制英文界面"
+            data-switch="forceEnglish"
+          >
+            <span class="aiz-switch__knob" aria-hidden="true"></span>
+          </button>
+        </div>
+
+        <div class="p-toggle">
+          <div class="p-toggle__text">
+            <span class="p-toggle__label">译文高亮</span>
+            <span class="p-toggle__desc">给译文加浅色底纹，方便逐条校对</span>
+          </div>
+          <button
+            class="aiz-switch"
+            type="button"
+            role="switch"
+            aria-checked="false"
+            aria-label="译文高亮"
+            data-switch="highlight"
+          >
+            <span class="aiz-switch__knob" aria-hidden="true"></span>
+          </button>
+        </div>
+
+        <div class="p-toggle">
+          <div class="p-toggle__text">
+            <span class="p-toggle__label">悬停看原文</span>
+            <span class="p-toggle__desc">鼠标悬停译文时显示英文原文</span>
+          </div>
+          <button
+            class="aiz-switch"
+            type="button"
+            role="switch"
+            aria-checked="false"
+            aria-label="悬停看原文"
+            data-switch="hoverOriginal"
+          >
+            <span class="aiz-switch__knob" aria-hidden="true"></span>
+          </button>
+        </div>
+      </section>
+
+      <div class="p-actions" role="group" aria-label="页面操作">
+        <button class="aiz-btn aiz-btn--primary p-action p-action--wide" type="button" id="btnRetranslate">
+          <span class="aiz-btn__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 12a8 8 0 1 1-2.4-5.7" />
+              <path d="M20 4v4.2h-4.2" />
+            </svg>
+          </span>
+          重新翻译
+        </button>
+        <button class="aiz-btn aiz-btn--ghost p-action" type="button" id="btnClear">
+          <span class="aiz-btn__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 12a8 8 0 1 0 2.4-5.7" />
+              <path d="M4 4v4.2h4.2" />
+            </svg>
+          </span>
+          还原英文
+        </button>
+        <button class="aiz-btn aiz-btn--ghost p-action" type="button" id="btnOptions">
+          <span class="aiz-btn__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="3.1" />
+              <path d="M12 2.6v2.8M12 18.6v2.8M2.6 12h2.8M18.6 12h2.8M5.3 5.3l2 2M16.7 16.7l2 2M18.7 5.3l-2 2M7.3 16.7l-2 2" />
+            </svg>
+          </span>
+          打开设置
+        </button>
+      </div>
+
+      <section class="aiz-card p-unmatched" aria-labelledby="unmatchedTitle">
+        <header class="p-unmatched__head">
+          <h2 class="p-section-title" id="unmatchedTitle">
+            未汉化候选
+            <span class="aiz-badge aiz-badge--warn" id="unmatchedBadge">0</span>
+          </h2>
+          <button class="aiz-btn aiz-btn--sm aiz-btn--text" id="btnCopyUnmatched" type="button" disabled>
+            复制全部
+          </button>
+        </header>
+        <p class="p-hint" id="unmatchedHint">页面上没匹配到词典的英文 UI 文案，可在设置里补充。</p>
+        <ul class="p-list" id="unmatchedList" aria-live="polite" aria-label="未汉化候选列表"></ul>
+        <div class="aiz-empty aiz-empty--ok p-empty" id="unmatchedEmpty" hidden>
+          <span class="aiz-empty__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4.5 12.5l5 5 10-11" />
+            </svg>
+          </span>
+          <span>没有被遗漏的英文文案</span>
+        </div>
+      </section>
+    </main>
+
+    <footer class="p-footer">
+      <div class="p-shortcut">
+        <kbd>Alt</kbd>
+        <span aria-hidden="true">+</span>
+        <kbd>Shift</kbd>
+        <span aria-hidden="true">+</span>
+        <kbd>H</kbd>
+        <span class="p-shortcut__label">开关汉化</span>
+      </div>
+      <nav class="p-links" aria-label="更多链接">
+        <a href="../options/options.html#general" target="_blank" rel="noopener">设置</a>
+        <span aria-hidden="true">·</span>
+        <a href="../options/options.html#about" target="_blank" rel="noopener">术语表</a>
+      </nav>
+    </footer>
+  </body>
+</html>

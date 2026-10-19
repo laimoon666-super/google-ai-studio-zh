@@ -1,0 +1,67 @@
+/* ============================================================
+ * Google AI Studio 汉化助手 · 注入样式
+ * 只做两件事：
+ *  1. html.aiz-hl 打开时，给译文加一条淡紫色下划线，方便校对
+ *  2. 悬停看原文时使用的浮动 tooltip
+ * 不改变任何原有布局尺寸（不使用 padding / margin / border 占位）。
+ * ============================================================ */
+
+html.aiz-hl [data-aiz-zh] {
+  background-image: linear-gradient(
+    to top,
+    rgba(124, 77, 255, 0.16) 0,
+    rgba(124, 77, 255, 0.16) 38%,
+    transparent 38%
+  );
+  border-radius: 2px;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+html.aiz-hl [data-aiz-zh]:hover {
+  background-image: linear-gradient(
+    to top,
+    rgba(26, 115, 232, 0.22) 0,
+    rgba(26, 115, 232, 0.22) 38%,
+    transparent 38%
+  );
+}
+
+.aiz-orig-tip {
+  position: fixed;
+  z-index: 2147483647;
+  max-width: 340px;
+  padding: 6px 10px;
+  border-radius: 8px;
+  background: #202124;
+  color: #ffffff;
+  font-family: Roboto, "Google Sans", "Segoe UI", system-ui, sans-serif;
+  font-size: 12px;
+  line-height: 1.5;
+  letter-spacing: 0.2px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.28);
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(2px);
+  transition: opacity 0.12s ease, transform 0.12s ease;
+  white-space: normal;
+  word-break: break-word;
+}
+
+.aiz-orig-tip.aiz-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-color-scheme: dark) {
+  .aiz-orig-tip {
+    background: #e8eaed;
+    color: #202124;
+  }
+}
+
+@media print {
+  .aiz-orig-tip {
+    display: none !important;
+  }
+}

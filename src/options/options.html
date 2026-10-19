@@ -1,0 +1,693 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>设置 · AI Studio 汉化</title>
+    <link rel="stylesheet" href="../ui/theme.css" />
+    <link rel="stylesheet" href="options.css" />
+    <script defer src="../dict/_common.js"></script>
+    <script defer src="../dict/playground.js"></script>
+    <script defer src="../dict/build.js"></script>
+    <script defer src="../dict/manage.js"></script>
+    <script defer src="../core/patterns.js"></script>
+    <script defer src="../ui/mock.js"></script>
+    <script defer src="options.js"></script>
+  </head>
+  <body class="options-body">
+    <svg class="o-sprite" aria-hidden="true" focusable="false" width="0" height="0">
+      <symbol id="i-tune" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M4 7h7M15 7h5M4 12h11M19 12h1M4 17h3M11 17h9" />
+        <circle cx="13" cy="7" r="2" />
+        <circle cx="17" cy="12" r="2" />
+        <circle cx="9" cy="17" r="2" />
+      </symbol>
+      <symbol id="i-book" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M5 4.8A1.8 1.8 0 0 1 6.8 3H19v18H6.8A1.8 1.8 0 0 1 5 19.2z" />
+        <path d="M9 3v18" />
+      </symbol>
+      <symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 3.2 19 6v5.6c0 4-2.9 7.2-7 9-4.1-1.8-7-5-7-9V6z" />
+        <path d="M9 11.8l2.1 2.1 4-4.2" />
+      </symbol>
+      <symbol id="i-code" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M9 7 4 12l5 5M15 7l5 5-5 5M13 5.5l-2 13" />
+      </symbol>
+      <symbol id="i-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="11" cy="11" r="6.2" />
+        <path d="M15.6 15.6 20 20" />
+      </symbol>
+      <symbol id="i-backup" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <ellipse cx="12" cy="6" rx="7" ry="3" />
+        <path d="M5 6v6c0 1.7 3.1 3 7 3s7-1.3 7-3V6" />
+        <path d="M5 12v6c0 1.7 3.1 3 7 3s7-1.3 7-3v-6" />
+      </symbol>
+      <symbol id="i-info" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="8.6" />
+        <path d="M12 11v5.2" />
+        <circle cx="12" cy="7.9" r=".9" fill="currentColor" stroke="none" />
+      </symbol>
+      <symbol id="i-download" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 4v10.5M8 11l4 4 4-4M5 19.5h14" />
+      </symbol>
+      <symbol id="i-upload" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 16V5M8 8.5l4-4 4 4M5 19.5h14" />
+      </symbol>
+      <symbol id="i-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 5v14M5 12h14" />
+      </symbol>
+      <symbol id="i-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="9" y="9" width="11" height="11" rx="2.4" />
+        <path d="M15 6.2A2.2 2.2 0 0 0 12.8 4H6.2A2.2 2.2 0 0 0 4 6.2v6.6A2.2 2.2 0 0 0 6.2 15" />
+      </symbol>
+      <symbol id="i-trash" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M4.5 7h15M9.5 4.5h5M7 7l.8 12.1A1.5 1.5 0 0 0 9.3 20.5h5.4a1.5 1.5 0 0 0 1.5-1.4L17 7" />
+        <path d="M10.3 11v5.5M13.7 11v5.5" />
+      </symbol>
+      <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M5 12.5l4.2 4.2L19 6.8" />
+      </symbol>
+      <symbol id="i-alert" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 4.5 21 20H3z" />
+        <path d="M12 10v4.2" />
+        <circle cx="12" cy="17.2" r=".9" fill="currentColor" stroke="none" />
+      </symbol>
+    </svg>
+
+    <header class="o-topbar">
+      <div class="o-topbar__inner">
+        <a class="o-brand" href="#general">
+          <span class="o-brand__logo" aria-hidden="true">汉</span>
+          <span class="o-brand__text">
+            <strong>AI Studio 汉化</strong>
+            <span id="topVersion">v1.0.0</span>
+          </span>
+        </a>
+        <div class="o-topbar__actions">
+          <span class="o-save-state" id="saveState" role="status" aria-live="polite">
+            <span class="o-save-state__dot" aria-hidden="true"></span>
+            <span id="saveStateText">设置自动保存</span>
+          </span>
+          <button class="o-quick-toggle" id="quickToggle" type="button" aria-pressed="true">
+            <span class="o-quick-toggle__dot" aria-hidden="true"></span>
+            <span id="quickToggleLabel">汉化已启用</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <div class="o-shell">
+      <nav class="o-nav" aria-label="设置分区">
+        <p class="o-nav__label">设置</p>
+        <a class="o-nav__item" href="#general" data-route="general">
+          <svg class="o-icon" aria-hidden="true"><use href="#i-tune"></use></svg>
+          <span>常规</span>
+        </a>
+        <a class="o-nav__item" href="#dict" data-route="dict">
+          <svg class="o-icon" aria-hidden="true"><use href="#i-book"></use></svg>
+          <span>词典管理</span>
+          <span class="o-nav__count" id="navDictCount" hidden>0</span>
+        </a>
+        <a class="o-nav__item" href="#exclude" data-route="exclude">
+          <svg class="o-icon" aria-hidden="true"><use href="#i-shield"></use></svg>
+          <span>排除规则</span>
+        </a>
+        <a class="o-nav__item" href="#patterns" data-route="patterns">
+          <svg class="o-icon" aria-hidden="true"><use href="#i-code"></use></svg>
+          <span>动态规则</span>
+        </a>
+        <a class="o-nav__item" href="#unmatched" data-route="unmatched">
+          <svg class="o-icon" aria-hidden="true"><use href="#i-search"></use></svg>
+          <span>未汉化收集</span>
+          <span class="o-nav__count o-nav__count--warn" id="navUnmatchedCount" hidden>0</span>
+        </a>
+        <a class="o-nav__item" href="#backup" data-route="backup">
+          <svg class="o-icon" aria-hidden="true"><use href="#i-backup"></use></svg>
+          <span>数据与备份</span>
+        </a>
+        <a class="o-nav__item" href="#about" data-route="about">
+          <svg class="o-icon" aria-hidden="true"><use href="#i-info"></use></svg>
+          <span>关于</span>
+        </a>
+        <div class="o-nav__foot">
+          <span>快捷键</span>
+          <span class="o-nav__keys"><kbd>Alt</kbd><span>+</span><kbd>Shift</kbd><span>+</span><kbd>H</kbd></span>
+        </div>
+      </nav>
+
+      <main class="o-main" id="main">
+        <!-- ============================ 常规 ============================ -->
+        <section class="o-section" id="sec-general" data-section="general" aria-labelledby="generalTitle">
+          <header class="o-head">
+            <h2 class="o-head__title" id="generalTitle" tabindex="-1">常规</h2>
+            <p class="o-head__desc">
+              控制汉化的全局行为。修改会立即保存，并通过 <code class="o-code">chrome.storage.onChanged</code> 同步到所有 AI Studio 标签页。
+            </p>
+          </header>
+
+          <div class="aiz-card o-setting-card">
+            <div class="o-setting">
+              <div class="o-setting__text">
+                <h3 class="o-setting__title">启用汉化</h3>
+                <p class="o-setting__desc">总开关。关闭后页面保持英文原文，扩展不再修改任何文本。</p>
+              </div>
+              <button class="aiz-switch" type="button" role="switch" aria-checked="true" aria-label="启用汉化" data-key="enabled">
+                <span class="aiz-switch__knob" aria-hidden="true"></span>
+              </button>
+            </div>
+
+            <div class="o-setting">
+              <div class="o-setting__text">
+                <h3 class="o-setting__title">强制英文界面</h3>
+                <p class="o-setting__desc">通过 declarativeNetRequest 让 AI Studio 以英文渲染，保证词典命中一致；修改后需刷新页面。</p>
+              </div>
+              <button class="aiz-switch" type="button" role="switch" aria-checked="true" aria-label="强制英文界面" data-key="forceEnglish">
+                <span class="aiz-switch__knob" aria-hidden="true"></span>
+              </button>
+            </div>
+
+            <div class="o-setting">
+              <div class="o-setting__text">
+                <h3 class="o-setting__title">译文高亮</h3>
+                <p class="o-setting__desc">给译文加浅紫色底纹，便于逐条校对；日常使用建议关闭。</p>
+              </div>
+              <button class="aiz-switch" type="button" role="switch" aria-checked="false" aria-label="译文高亮" data-key="highlight">
+                <span class="aiz-switch__knob" aria-hidden="true"></span>
+              </button>
+            </div>
+
+            <div class="o-setting">
+              <div class="o-setting__text">
+                <h3 class="o-setting__title">悬停看原文</h3>
+                <p class="o-setting__desc">鼠标悬停译文时，用 tooltip 显示对应的英文原文。</p>
+              </div>
+              <button class="aiz-switch" type="button" role="switch" aria-checked="false" aria-label="悬停看原文" data-key="hoverOriginal">
+                <span class="aiz-switch__knob" aria-hidden="true"></span>
+              </button>
+            </div>
+
+            <div class="o-setting">
+              <div class="o-setting__text">
+                <h3 class="o-setting__title">翻译属性文案</h3>
+                <p class="o-setting__desc">同时处理 placeholder / aria-label / title / alt 等属性中的界面文案。</p>
+              </div>
+              <button class="aiz-switch" type="button" role="switch" aria-checked="true" aria-label="翻译属性文案" data-key="translateAttrs">
+                <span class="aiz-switch__knob" aria-hidden="true"></span>
+              </button>
+            </div>
+
+            <div class="o-setting">
+              <div class="o-setting__text">
+                <h3 class="o-setting__title">收集未汉化文案</h3>
+                <p class="o-setting__desc">把未命中词典的英文 UI 文案记录到本地，方便在「未汉化收集」里补充词条。</p>
+              </div>
+              <button class="aiz-switch" type="button" role="switch" aria-checked="true" aria-label="收集未汉化文案" data-key="collectUnmatched">
+                <span class="aiz-switch__knob" aria-hidden="true"></span>
+              </button>
+            </div>
+          </div>
+
+          <div class="aiz-card o-danger-card">
+            <div class="o-card-head">
+              <h3>恢复默认设置</h3>
+              <span class="aiz-badge aiz-badge--muted">不影响词典</span>
+            </div>
+            <p class="o-card-desc">把以上六个开关、排除规则与动态规则恢复为默认值；自定义词典与未汉化记录会保留。</p>
+            <div class="o-card-actions">
+              <button class="aiz-btn aiz-btn--ghost aiz-btn--sm" type="button" id="btnResetSettings">恢复默认设置</button>
+            </div>
+          </div>
+        </section>
+
+        <!-- ========================== 词典管理 ========================== -->
+        <section class="o-section" id="sec-dict" data-section="dict" aria-labelledby="dictTitle" hidden>
+          <header class="o-head">
+            <h2 class="o-head__title" id="dictTitle" tabindex="-1">词典管理</h2>
+            <p class="o-head__desc">
+              内置词典只读；自定义词条优先级最高，写入 <code class="o-code">aiz.customDict</code> 后立即生效。
+            </p>
+          </header>
+
+          <div class="o-stat-grid">
+            <div class="aiz-card o-stat">
+              <span class="o-stat__label">内置词条</span>
+              <strong class="o-stat__value" id="statBuiltin">—</strong>
+              <span class="o-stat__hint" id="statBuiltinHint">来自翻译引擎</span>
+            </div>
+            <div class="aiz-card o-stat">
+              <span class="o-stat__label">自定义词条</span>
+              <strong class="o-stat__value" id="statCustom">0</strong>
+              <span class="o-stat__hint">保存在本地存储</span>
+            </div>
+            <div class="aiz-card o-stat">
+              <span class="o-stat__label">当前筛选</span>
+              <strong class="o-stat__value" id="statFiltered">0</strong>
+              <span class="o-stat__hint" id="statFilteredHint">全部来源</span>
+            </div>
+            <div class="aiz-card o-stat o-stat--accent">
+              <span class="o-stat__label">词典状态</span>
+              <strong class="o-stat__value o-stat__value--sm" id="statDictState">加载中</strong>
+              <span class="o-stat__hint" id="statDictStateHint">正在读取快照…</span>
+            </div>
+          </div>
+
+          <div class="aiz-card o-panel">
+            <div class="o-toolbar">
+              <div class="aiz-search o-toolbar__search">
+                <span class="aiz-search__icon" aria-hidden="true"><svg class="o-icon"><use href="#i-search"></use></svg></span>
+                <input class="aiz-input" id="dictSearch" type="search" placeholder="搜索英文或中文…" aria-label="搜索词典" autocomplete="off" />
+              </div>
+              <div class="o-seg" role="group" aria-label="按来源筛选">
+                <button class="o-seg__item is-active" type="button" data-source="all" aria-pressed="true">全部</button>
+                <button class="o-seg__item" type="button" data-source="builtin" aria-pressed="false">内置</button>
+                <button class="o-seg__item" type="button" data-source="custom" aria-pressed="false">自定义</button>
+              </div>
+              <div class="o-toolbar__spacer"></div>
+              <button class="aiz-btn aiz-btn--ghost aiz-btn--sm" type="button" id="btnExportDict">
+                <svg class="o-icon" aria-hidden="true"><use href="#i-download"></use></svg>
+                导出 JSON
+              </button>
+              <button class="aiz-btn aiz-btn--ghost aiz-btn--sm" type="button" id="btnImportDict">
+                <svg class="o-icon" aria-hidden="true"><use href="#i-upload"></use></svg>
+                导入 JSON
+              </button>
+              <button class="aiz-btn aiz-btn--primary aiz-btn--sm" type="button" id="btnAddDict">
+                <svg class="o-icon" aria-hidden="true"><use href="#i-plus"></use></svg>
+                新增词条
+              </button>
+            </div>
+
+            <form class="o-inline-form" id="dictForm" hidden novalidate>
+              <div class="o-inline-grid">
+                <label class="aiz-field">
+                  <span>英文原文</span>
+                  <input class="aiz-input aiz-input--mono" id="dictEn" type="text" placeholder="例如 Run settings" autocomplete="off" spellcheck="false" />
+                </label>
+                <label class="aiz-field">
+                  <span>中文译文</span>
+                  <input class="aiz-input" id="dictZh" type="text" placeholder="例如 运行设置" autocomplete="off" />
+                </label>
+              </div>
+              <p class="aiz-form-error" id="dictFormError" role="alert" hidden></p>
+              <div class="o-form-actions">
+                <button class="aiz-btn aiz-btn--ghost aiz-btn--sm" type="button" id="dictFormCancel">取消</button>
+                <button class="aiz-btn aiz-btn--primary aiz-btn--sm" type="submit">保存词条</button>
+              </div>
+            </form>
+
+            <p class="o-note" id="dictSnapshotNote" hidden></p>
+
+            <div class="o-table-wrap aiz-scroll" id="dictTableWrap">
+              <table class="aiz-table o-dict-table">
+                <thead>
+                  <tr>
+                    <th scope="col">英文原文</th>
+                    <th scope="col">中文译文</th>
+                    <th scope="col">来源</th>
+                    <th scope="col">分卷</th>
+                    <th scope="col" class="aiz-table__actions">操作</th>
+                  </tr>
+                </thead>
+                <tbody id="dictBody"></tbody>
+              </table>
+            </div>
+
+            <div class="aiz-empty" id="dictEmpty" hidden>
+              <span>没有匹配的词条</span>
+              <span class="o-empty-sub">试试清空搜索条件，或新增一条自定义词条。</span>
+            </div>
+
+            <div class="o-pager">
+              <span class="o-pager__info" id="dictPageInfo">—</span>
+              <div class="o-pager__controls">
+                <button class="aiz-btn aiz-btn--ghost aiz-btn--sm" type="button" id="dictPrev">上一页</button>
+                <button class="aiz-btn aiz-btn--ghost aiz-btn--sm" type="button" id="dictNext">下一页</button>
+              </div>
+            </div>
+          </div>
+
+          <input type="file" id="dictFile" accept="application/json,.json" hidden />
+        </section>
+
+        <!-- ========================== 排除规则 ========================== -->
+        <section class="o-section" id="sec-exclude" data-section="exclude" aria-labelledby="excludeTitle" hidden>
+          <header class="o-head">
+            <h2 class="o-head__title" id="excludeTitle" tabindex="-1">排除规则</h2>
+            <p class="o-head__desc">
+              命中排除选择器的元素会被整段跳过，通常用于图标连字、代码块与聊天富文本。自定义规则写入
+              <code class="o-code">aiz.settings.extraSkipSelectors</code>。
+            </p>
+          </header>
+
+          <div class="aiz-card">
+            <div class="o-card-head">
+              <h3>内置规则</h3>
+              <span class="aiz-badge aiz-badge--muted">只读 · <span id="builtinRuleCount">0</span> 条</span>
+            </div>
+            <p class="o-card-desc">由翻译引擎自带，无法在此修改；如需跳过更多元素，请添加自定义选择器。</p>
+            <div class="o-chips" id="builtinRules"></div>
+          </div>
+
+          <div class="aiz-card">
+            <div class="o-card-head">
+              <h3>自定义选择器</h3>
+              <span class="aiz-badge" id="customRuleCount">0</span>
+            </div>
+            <p class="o-card-desc">追加到内置规则之后。支持任意合法 CSS 选择器，逗号分隔的多个选择器请拆成多条。</p>
+
+            <form class="o-inline-form o-inline-form--row" id="ruleForm" novalidate>
+              <input class="aiz-input aiz-input--mono" id="ruleInput" type="text" placeholder="例如 .my-editor, ms-chat-turn" aria-label="新的自定义选择器" autocomplete="off" spellcheck="false" />
+              <button class="aiz-btn aiz-btn--primary aiz-btn--sm" type="submit">
+                <svg class="o-icon" aria-hidden="true"><use href="#i-plus"></use></svg>
+                添加
+              </button>
+            </form>
+            <p class="aiz-form-error" id="ruleError" role="alert" hidden></p>
+            <p class="o-hint" id="rulePreview" aria-live="polite">输入选择器可实时预览它在<b>本设置页</b>命中的元素数量。</p>
+
+            <ul class="o-rule-list" id="customRules"></ul>
+            <div class="aiz-empty" id="rulesEmpty">还没有自定义选择器</div>
+          </div>
+
+          <div class="aiz-card aiz-card--flat o-callout">
+            <span class="o-callout__icon" aria-hidden="true"><svg class="o-icon"><use href="#i-info"></use></svg></span>
+            <div>
+              <strong>预检说明</strong>
+              <p>设置页只能在自己的 DOM 上预检命中数量；AI Studio 页面上的真实匹配由内容脚本执行，语法错误的选择器会被引擎跳过。</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- ========================== 动态规则 ========================== -->
+        <section class="o-section" id="sec-patterns" data-section="patterns" aria-labelledby="patternsTitle" hidden>
+          <header class="o-head">
+            <h2 class="o-head__title" id="patternsTitle" tabindex="-1">动态规则（进阶）</h2>
+            <p class="o-head__desc">
+              用正则把带变量的界面文案映射为中文模板，例如 <code class="o-code">Show 12 more</code> → <code class="o-code">再显示 12 项</code>。
+            </p>
+          </header>
+
+          <div class="aiz-card o-callout">
+            <span class="o-callout__icon" aria-hidden="true"><svg class="o-icon"><use href="#i-shield"></use></svg></span>
+            <div>
+              <strong>正则来自本地存储，仅作用于文本，不会执行代码</strong>
+              <p>规则只通过 <code class="o-code">String.replace</code> 处理文本节点；不会 eval、不会注入 HTML、不会发起网络请求。</p>
+            </div>
+          </div>
+
+          <div class="aiz-card">
+            <div class="o-card-head">
+              <h3>内置规则</h3>
+              <span class="aiz-badge aiz-badge--muted" id="builtinPatternCount">只读</span>
+            </div>
+            <p class="o-card-desc">由翻译引擎按顺序应用，展示顺序即执行顺序。</p>
+            <div class="o-pattern-list o-pattern-list--scroll aiz-scroll" id="builtinPatterns"></div>
+            <div class="aiz-empty" id="builtinPatternsEmpty" hidden>
+              <span>后台未提供内置规则快照</span>
+              <span class="o-empty-sub">内置规则定义在 <code class="o-code">src/core/patterns.js</code>，不影响自定义规则的使用。</span>
+            </div>
+          </div>
+
+          <div class="aiz-card">
+            <div class="o-card-head">
+              <h3>自定义规则</h3>
+              <span class="aiz-badge" id="customPatternCount">0</span>
+              <div class="o-toolbar__spacer"></div>
+              <button class="aiz-btn aiz-btn--primary aiz-btn--sm" type="button" id="btnAddPattern">
+                <svg class="o-icon" aria-hidden="true"><use href="#i-plus"></use></svg>
+                新增规则
+              </button>
+            </div>
+            <p class="o-card-desc">
+              格式 <code class="o-code">{ re, flags, to, note }</code>，替换模板支持 <code class="o-code">$1</code> 捕获组；保存到
+              <code class="o-code">aiz.settings.extraPatterns</code>。
+            </p>
+
+            <form class="o-inline-form" id="patternForm" hidden novalidate>
+              <div class="o-inline-grid o-inline-grid--pattern">
+                <label class="aiz-field">
+                  <span>正则 re</span>
+                  <input class="aiz-input aiz-input--mono" id="patRe" type="text" placeholder="^Show\s+(\d+)\s+more$" autocomplete="off" spellcheck="false" />
+                </label>
+                <label class="aiz-field o-field--flags">
+                  <span>flags</span>
+                  <input class="aiz-input aiz-input--mono" id="patFlags" type="text" value="i" placeholder="gi" autocomplete="off" spellcheck="false" />
+                </label>
+                <label class="aiz-field">
+                  <span>替换为 to</span>
+                  <input class="aiz-input aiz-input--mono" id="patTo" type="text" placeholder="再显示 $1 项" autocomplete="off" spellcheck="false" />
+                </label>
+              </div>
+              <label class="aiz-field">
+                <span>说明 note（可选）</span>
+                <input class="aiz-input" id="patNote" type="text" placeholder="这条规则解决什么问题" autocomplete="off" />
+              </label>
+              <p class="aiz-form-error" id="patternError" role="alert" hidden></p>
+              <div class="o-form-actions">
+                <button class="aiz-btn aiz-btn--ghost aiz-btn--sm" type="button" id="patternCancel">取消</button>
+                <button class="aiz-btn aiz-btn--primary aiz-btn--sm" type="submit">添加规则</button>
+              </div>
+            </form>
+
+            <div class="o-pattern-list" id="customPatterns"></div>
+            <div class="aiz-empty" id="patternsEmpty">还没有自定义正则规则</div>
+          </div>
+
+          <div class="aiz-card">
+            <div class="o-card-head">
+              <h3>实时测试台</h3>
+              <span class="aiz-badge aiz-badge--blue">仅本页运行</span>
+            </div>
+            <p class="o-card-desc">在示例文本上依次应用自定义规则，仅用于预览效果，不会写入任何页面。</p>
+            <label class="aiz-field">
+              <span>示例文本</span>
+              <textarea class="aiz-textarea aiz-input--mono" id="patternSample" rows="2">Run settings · System instructions · Thinking level: High · Show 12 more · Gemini 3.8 Flash</textarea>
+            </label>
+            <div class="o-test-results" id="patternResults" aria-live="polite"></div>
+          </div>
+        </section>
+
+        <!-- ======================== 未汉化收集 ======================== -->
+        <section class="o-section" id="sec-unmatched" data-section="unmatched" aria-labelledby="unmatchedTitle" hidden>
+          <header class="o-head">
+            <h2 class="o-head__title" id="unmatchedTitle" tabindex="-1">未汉化收集</h2>
+            <p class="o-head__desc">
+              页面上发现但词典未命中的英文 UI 文案，写入 <code class="o-code">aiz.unmatched</code>。勾选后可批量复制或下载，便于补充词条。
+            </p>
+          </header>
+
+          <div class="aiz-card o-panel">
+            <div class="o-toolbar">
+              <div class="aiz-search o-toolbar__search">
+                <span class="aiz-search__icon" aria-hidden="true"><svg class="o-icon"><use href="#i-search"></use></svg></span>
+                <input class="aiz-input" id="unmatchedSearch" type="search" placeholder="搜索英文原文…" aria-label="搜索未汉化候选" autocomplete="off" />
+              </div>
+              <div class="o-toolbar__spacer"></div>
+              <span class="o-hint" id="unmatchedSummary">—</span>
+            </div>
+
+            <div class="o-toolbar o-toolbar--sub">
+              <label class="o-check">
+                <input type="checkbox" id="unmatchedSelectAll" />
+                <span>全选本页</span>
+              </label>
+              <span class="o-hint" id="unmatchedSelected">已选 0 条</span>
+              <div class="o-toolbar__spacer"></div>
+              <button class="aiz-btn aiz-btn--ghost aiz-btn--sm" type="button" id="btnCopyUnmatched" disabled>
+                <svg class="o-icon" aria-hidden="true"><use href="#i-copy"></use></svg>
+                复制为 JSON
+              </button>
+              <button class="aiz-btn aiz-btn--ghost aiz-btn--sm" type="button" id="btnDownloadUnmatched" disabled>
+                <svg class="o-icon" aria-hidden="true"><use href="#i-download"></use></svg>
+                下载 txt
+              </button>
+              <button class="aiz-btn aiz-btn--primary aiz-btn--sm" type="button" id="btnToDict" disabled title="为勾选的候选填写中文译文并写入自定义词典">
+                <svg class="o-icon" aria-hidden="true"><use href="#i-book"></use></svg>
+                转为自定义词条
+              </button>
+              <button class="aiz-btn aiz-btn--danger-text aiz-btn--sm" type="button" id="btnClearUnmatched">
+                <svg class="o-icon" aria-hidden="true"><use href="#i-trash"></use></svg>
+                清空记录
+              </button>
+            </div>
+
+            <div class="o-table-wrap aiz-scroll" id="unmatchedTableWrap">
+              <table class="aiz-table o-unmatched-table">
+                <thead>
+                  <tr>
+                    <th scope="col" class="o-col-check"><span class="aiz-sr-only">选择</span></th>
+                    <th scope="col">英文原文</th>
+                    <th scope="col" class="o-col-count">出现次数</th>
+                    <th scope="col">最近出现页面</th>
+                  </tr>
+                </thead>
+                <tbody id="unmatchedBody"></tbody>
+              </table>
+            </div>
+
+            <div class="aiz-empty aiz-empty--ok" id="unmatchedEmpty" hidden>
+              <span class="aiz-empty__icon" aria-hidden="true"><svg class="o-icon"><use href="#i-check"></use></svg></span>
+              <span>没有未汉化候选</span>
+              <span class="o-empty-sub">当前词典覆盖良好，或收集开关已关闭。</span>
+            </div>
+
+            <div class="o-pager">
+              <span class="o-pager__info" id="unmatchedPageInfo">—</span>
+              <div class="o-pager__controls">
+                <button class="aiz-btn aiz-btn--ghost aiz-btn--sm" type="button" id="unmatchedPrev">上一页</button>
+                <button class="aiz-btn aiz-btn--ghost aiz-btn--sm" type="button" id="unmatchedNext">下一页</button>
+              </div>
+            </div>
+
+            <p class="o-footnote">
+              数据模型 <code class="o-code">{ [英文]: 出现次数 }</code> 不保存逐条页面信息，「最近出现页面」取自最近一次翻译统计。
+            </p>
+          </div>
+        </section>
+
+        <!-- ======================== 数据与备份 ======================== -->
+        <section class="o-section" id="sec-backup" data-section="backup" aria-labelledby="backupTitle" hidden>
+          <header class="o-head">
+            <h2 class="o-head__title" id="backupTitle" tabindex="-1">数据与备份</h2>
+            <p class="o-head__desc">所有数据只保存在本机 <code class="o-code">chrome.storage.local</code>，可整体导出、导入或清空。</p>
+          </header>
+
+          <div class="o-grid o-grid--2">
+            <div class="aiz-card">
+              <div class="o-card-head">
+                <h3>导出全部配置</h3>
+                <span class="aiz-badge aiz-badge--blue">.json</span>
+              </div>
+              <p class="o-card-desc">包含 settings、customDict、unmatched、stats 与 schema 版本号，便于换机迁移或回滚。</p>
+              <p class="o-meta" id="dataMeta">—</p>
+              <div class="o-card-actions">
+                <button class="aiz-btn aiz-btn--primary aiz-btn--sm" type="button" id="btnExportAll">
+                  <svg class="o-icon" aria-hidden="true"><use href="#i-download"></use></svg>
+                  导出配置
+                </button>
+              </div>
+            </div>
+
+            <div class="aiz-card">
+              <div class="o-card-head">
+                <h3>导入配置</h3>
+                <span class="aiz-badge aiz-badge--muted">覆盖写入</span>
+              </div>
+              <p class="o-card-desc">导入前会校验 schema 与字段类型；确认后覆盖当前设置、自定义词典与未汉化记录。</p>
+              <div class="o-card-actions">
+                <button class="aiz-btn aiz-btn--ghost aiz-btn--sm" type="button" id="btnImportAll">
+                  <svg class="o-icon" aria-hidden="true"><use href="#i-upload"></use></svg>
+                  选择配置文件
+                </button>
+              </div>
+              <input type="file" id="configFile" accept="application/json,.json" hidden />
+            </div>
+          </div>
+
+          <div class="aiz-card o-danger-card">
+            <div class="o-card-head">
+              <h3>重置全部本地数据</h3>
+              <span class="aiz-badge aiz-badge--danger">危险操作</span>
+            </div>
+            <p class="o-card-desc">
+              清空 <code class="o-code">aiz.settings</code>、<code class="o-code">aiz.customDict</code>、
+              <code class="o-code">aiz.unmatched</code>、<code class="o-code">aiz.stats</code> 并恢复默认，不可撤销。
+            </p>
+            <div class="o-card-actions">
+              <button class="aiz-btn aiz-btn--danger aiz-btn--sm" type="button" id="btnResetAll">重置全部数据</button>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============================ 关于 ============================ -->
+        <section class="o-section" id="sec-about" data-section="about" aria-labelledby="aboutTitle" hidden>
+          <header class="o-head">
+            <h2 class="o-head__title" id="aboutTitle" tabindex="-1">关于</h2>
+            <p class="o-head__desc">版本信息、功能清单、快捷键、术语表与已知限制。</p>
+          </header>
+
+          <div class="aiz-card o-hero">
+            <div class="o-hero__logo" aria-hidden="true">汉</div>
+            <div class="o-hero__body">
+              <h3>
+                Google AI Studio 汉化
+                <span class="aiz-badge aiz-badge--primary" id="aboutVersion">v1.0.0</span>
+              </h3>
+              <p>用「词典精确匹配 + 正则动态规则」把 AI Studio 界面确定性汉化，绝不翻译模型输出、代码或用户提示词。</p>
+              <div class="o-hero__chips">
+                <span class="aiz-chip"><code id="aboutDictCount">—</code><span>内置词条</span></span>
+                <span class="aiz-chip"><code id="aboutCustomCount">0</code><span>自定义词条</span></span>
+                <span class="aiz-chip"><code>Alt+Shift+H</code><span>开关汉化</span></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="o-grid o-grid--2">
+            <div class="aiz-card">
+              <h3>功能清单</h3>
+              <ul class="o-check-list">
+                <li>词典精确匹配 + 正则动态规则，确定性汉化</li>
+                <li>跳过代码块、编辑器、聊天富文本与图标连字</li>
+                <li>支持 placeholder / aria-label / title / alt</li>
+                <li>自定义词条优先级最高，可覆盖内置词条</li>
+                <li>收集未汉化候选，一键复制补充词条</li>
+                <li>译文高亮、悬停看原文，便于校对</li>
+              </ul>
+            </div>
+            <div class="aiz-card">
+              <h3>使用方式</h3>
+              <ol class="o-step-list">
+                <li>在 <code class="o-code">chrome://extensions</code> 开启开发者模式，加载本项目根目录。</li>
+                <li>打开 <code class="o-code">https://aistudio.google.com/</code>，页面自动汉化。</li>
+                <li>点击工具栏图标查看本次翻译统计，或进入本页调整设置。</li>
+              </ol>
+            </div>
+          </div>
+
+          <div class="aiz-card">
+            <h3>快捷键</h3>
+            <p class="o-kbd-line"><kbd>Alt</kbd><span>+</span><kbd>Shift</kbd><span>+</span><kbd>H</kbd><span>开关当前页汉化</span></p>
+            <p class="o-hint">若与其他扩展冲突，可在 <code class="o-code">chrome://extensions/shortcuts</code> 中修改。</p>
+          </div>
+
+          <div class="aiz-card" id="glossary">
+            <div class="o-card-head">
+              <h3>术语表</h3>
+              <span class="aiz-badge aiz-badge--muted">CONTRACT §6</span>
+            </div>
+            <p class="o-card-desc">全项目统一译法，自定义词条也应遵循，避免同一术语出现多种译法。</p>
+            <dl class="o-glossary" id="glossaryList"></dl>
+          </div>
+
+          <div class="aiz-card">
+            <h3>已知限制</h3>
+            <ul class="o-warn-list">
+              <li>不翻译模型输出、代码、用户输入与文件内容（这是特性，不是缺陷）。</li>
+              <li>AI Studio 前端更新后可能出现新的英文文案，需要补充词典或动态规则。</li>
+              <li>若页面已加载为中文，部分词典键无法命中，建议开启「强制英文界面」并刷新。</li>
+              <li>内置词条由翻译引擎提供，本页仅能展示后台给出的只读快照。</li>
+            </ul>
+          </div>
+
+          <div class="aiz-card">
+            <h3>更新日志</h3>
+            <ol class="o-timeline">
+              <li>
+                <span class="o-timeline__dot" aria-hidden="true"></span>
+                <div>
+                  <strong>1.0.0</strong>
+                  <span>首个版本：确定性词典汉化、动态规则、自定义词条、未汉化收集、数据备份与双页面 UI。</span>
+                </div>
+              </li>
+            </ol>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <footer class="o-footer">
+      <span>AI Studio 汉化 · 纯本地运行，不发起任何网络请求</span>
+      <span id="footerMode">扩展模式</span>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,43 @@
+# 生产打包产物
+dist/
+*.zip
+*.crx
+
+# 勘察抓包与调研中间数据
+recon/
+
+# 依赖与日志
+node_modules/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# 临时与设计源文件
+*.tmp
+*.temp
+*.psd
+*.ai
+
+# Python 缓存
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+
+# 系统冗余文件
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# 编辑器与 IDE 配置
+.idea/
+.vscode/
+*.swp
+*.swo
+*~

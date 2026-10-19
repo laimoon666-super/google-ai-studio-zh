@@ -1,0 +1,471 @@
+/* ==========================================================================
+   popup 弹窗样式（宽 380px，最大高 600px）
+   仅布局与页面级组件；颜色 / 圆角 / 阴影 / 按钮 / 开关等来自 ui/theme.css
+   ========================================================================== */
+
+html {
+  background: var(--bg);
+}
+
+body.popup-body {
+  width: 380px;
+  max-width: 100vw;
+  max-height: 600px;
+  min-height: 460px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: var(--bg);
+  box-shadow: var(--shadow-2);
+}
+
+@media (max-width: 420px) {
+  body.popup-body {
+    box-shadow: none;
+  }
+}
+
+/* popup 内的预览提示条更紧凑一些 */
+.popup-body .aiz-preview-banner {
+  padding: 4px 10px;
+  font-size: 10.5px;
+}
+
+.popup-body .aiz-preview-banner__host {
+  display: none;
+}
+
+.popup-body .aiz-preview-banner__btn {
+  padding: 1px 6px;
+  font-size: 10.5px;
+}
+
+/* --------------------------------------------------------------------------
+   头部
+   -------------------------------------------------------------------------- */
+
+.p-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 16px 8px;
+  flex: 0 0 auto;
+}
+
+.p-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.p-logo {
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+  width: 36px;
+  height: 36px;
+  border-radius: 12px;
+  background: var(--aiz-gradient);
+  color: #fff;
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  box-shadow: 0 4px 12px rgba(94, 60, 200, 0.28);
+}
+
+.p-brand__text {
+  display: grid;
+  gap: 1px;
+  min-width: 0;
+}
+
+.p-title {
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+}
+
+.p-version {
+  font-family: var(--aiz-font-mono);
+  font-size: 10.5px;
+  color: var(--text-3);
+}
+
+/* --------------------------------------------------------------------------
+   主体滚动区
+   -------------------------------------------------------------------------- */
+
+.p-main {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 8px 14px 12px;
+}
+
+/* 卡片按内容撑开，不要被 flex 容器压缩（否则状态卡会被挤扁） */
+.p-main > * {
+  flex: 0 0 auto;
+}
+
+/* --------------------------------------------------------------------------
+   状态卡
+   -------------------------------------------------------------------------- */
+
+.p-status {
+  position: relative;
+  overflow: hidden;
+  padding: 14px;
+  background: linear-gradient(158deg, var(--surface) 0%, var(--aiz-primary-softer) 100%);
+}
+
+.p-status::after {
+  content: "";
+  position: absolute;
+  right: -42px;
+  bottom: -58px;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background: var(--aiz-gradient-soft);
+  pointer-events: none;
+}
+
+.p-status__head {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.p-host {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  min-width: 0;
+}
+
+.p-host__dot {
+  flex: 0 0 auto;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--aiz-success);
+  box-shadow: 0 0 0 3px var(--aiz-success-soft);
+  transition: background var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+}
+
+.p-host__dot.is-off {
+  background: var(--text-3);
+  box-shadow: 0 0 0 3px var(--surface-2);
+}
+
+.p-host__name {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-family: var(--aiz-font-mono);
+  font-size: 11.5px;
+  color: var(--text-2);
+}
+
+.p-metrics {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: 13px;
+}
+
+.p-metric {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  min-width: 0;
+  padding: 0 9px;
+}
+
+.p-metric:first-child {
+  padding-left: 0;
+}
+
+.p-metric + .p-metric {
+  border-left: 1px solid var(--line);
+}
+
+.p-metric strong {
+  font-size: 21px;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: var(--text);
+  font-variant-numeric: tabular-nums;
+}
+
+.p-metric span {
+  font-size: 10.5px;
+  color: var(--text-3);
+  white-space: nowrap;
+}
+
+.p-status__note {
+  position: relative;
+  z-index: 1;
+  margin-top: 11px;
+  padding: 7px 9px;
+  border-radius: var(--r-sm);
+  background: var(--aiz-warning-soft);
+  color: var(--aiz-warning);
+  font-size: 11.5px;
+  line-height: 1.5;
+}
+
+.p-status__time {
+  position: relative;
+  z-index: 1;
+  margin-top: 8px;
+  font-size: 10.5px;
+  color: var(--text-3);
+}
+
+/* --------------------------------------------------------------------------
+   快捷开关
+   -------------------------------------------------------------------------- */
+
+.p-quick {
+  padding: 12px 14px 6px;
+}
+
+.p-section-title {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--text-2);
+}
+
+.p-quick .p-section-title {
+  margin-bottom: 2px;
+}
+
+.p-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.p-toggle:last-child {
+  border-bottom: none;
+}
+
+.p-toggle__text {
+  display: grid;
+  gap: 0;
+  min-width: 0;
+}
+
+.p-toggle__label {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text);
+}
+
+.p-toggle__desc {
+  font-size: 11px;
+  line-height: 1.45;
+  color: var(--text-3);
+}
+
+.p-toggle .aiz-switch {
+  width: 40px;
+  height: 24px;
+}
+
+.p-toggle .aiz-switch__knob {
+  width: 18px;
+  height: 18px;
+}
+
+.p-toggle .aiz-switch[aria-checked="true"] .aiz-switch__knob {
+  transform: translateX(16px);
+}
+
+/* --------------------------------------------------------------------------
+   操作按钮
+   -------------------------------------------------------------------------- */
+
+.p-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.p-action {
+  width: 100%;
+}
+
+.p-action--wide {
+  grid-column: 1 / -1;
+}
+
+.p-action .aiz-btn__icon {
+  width: 15px;
+  height: 15px;
+}
+
+/* --------------------------------------------------------------------------
+   未汉化候选
+   -------------------------------------------------------------------------- */
+
+.p-unmatched {
+  padding: 12px 14px 13px;
+}
+
+.p-unmatched__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.p-hint {
+  margin-top: 4px;
+  font-size: 11px;
+  line-height: 1.5;
+  color: var(--text-3);
+}
+
+.p-list {
+  display: grid;
+  gap: 2px;
+  margin-top: 8px;
+}
+
+.p-list__item {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 5px 6px;
+  border-radius: var(--r-sm);
+  transition: background var(--dur) var(--ease);
+}
+
+.p-list__item:hover {
+  background: var(--surface-2);
+}
+
+.p-list__dot {
+  flex: 0 0 auto;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--aiz-primary);
+  opacity: 0.75;
+}
+
+.p-list__text {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-family: var(--aiz-font-mono);
+  font-size: 11.5px;
+  color: var(--text-2);
+}
+
+.p-list__item .aiz-badge {
+  min-height: 17px;
+  padding: 0 6px;
+  font-size: 10px;
+}
+
+.p-list__more {
+  padding: 6px;
+  text-align: center;
+  font-size: 11px;
+  color: var(--text-3);
+}
+
+.p-empty {
+  margin-top: 10px;
+  padding: 18px;
+}
+
+/* --------------------------------------------------------------------------
+   底部
+   -------------------------------------------------------------------------- */
+
+.p-footer {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 9px 14px;
+  border-top: 1px solid var(--line);
+  background: var(--surface-glass);
+  backdrop-filter: blur(8px);
+}
+
+.p-shortcut {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  font-size: 10.5px;
+  color: var(--text-3);
+  white-space: nowrap;
+}
+
+.p-shortcut__label {
+  margin-left: 4px;
+}
+
+.p-links {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11.5px;
+  color: var(--text-3);
+}
+
+.p-links a {
+  color: var(--text-2);
+  font-weight: 500;
+}
+
+.p-links a:hover {
+  color: var(--aiz-primary-strong);
+}
+
+/* --------------------------------------------------------------------------
+   popup 内 Toast
+   -------------------------------------------------------------------------- */
+
+.popup-body .aiz-toast-stack {
+  left: 12px;
+  right: 12px;
+  bottom: 10px;
+  max-width: none;
+  align-items: stretch;
+}
+
+.popup-body .aiz-toast {
+  justify-content: flex-start;
+}

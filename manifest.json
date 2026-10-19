@@ -1,0 +1,67 @@
+{
+  "manifest_version": 3,
+  "name": "Google AI Studio 汉化助手",
+  "short_name": "AI Studio 汉化",
+  "version": "1.0.0",
+  "description": "把 Google AI Studio 的英文界面完整汉化为简体中文：词典精确匹配 + 动态文案规则 + 自定义词条 + 未汉化收集。只翻译界面，不动你的提示词与模型输出。",
+  "minimum_chrome_version": "102",
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "action": {
+    "default_title": "Google AI Studio 汉化助手",
+    "default_popup": "src/popup/popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "options_ui": {
+    "page": "src/options/options.html",
+    "open_in_tab": true
+  },
+  "background": {
+    "service_worker": "src/background.js"
+  },
+  "permissions": [
+    "storage",
+    "declarativeNetRequestWithHostAccess"
+  ],
+  "host_permissions": [
+    "https://aistudio.google.com/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://aistudio.google.com/*"
+      ],
+      "js": [
+        "src/dict/_common.js",
+        "src/dict/playground.js",
+        "src/dict/build.js",
+        "src/dict/manage.js",
+        "src/core/patterns.js",
+        "src/core/engine.js",
+        "src/core/boot.js"
+      ],
+      "css": [
+        "src/content.css"
+      ],
+      "run_at": "document_idle",
+      "all_frames": true
+    }
+  ],
+  "commands": {
+    "toggle-localization": {
+      "suggested_key": {
+        "default": "Alt+Shift+H"
+      },
+      "description": "开启 / 关闭界面汉化"
+    }
+  }
+}

@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Playground - Google AI Studio</title>
+<style>
+  body { font-family: Roboto, Arial, sans-serif; margin: 0; padding: 24px; }
+  .material-symbols-outlined, .material-icons, .google-symbols { font-family: "Material Icons"; }
+  nav, section { margin-bottom: 18px; }
+  .fake-icon { font-family: "Google Symbols"; }
+</style>
+</head>
+<body>
+  <nav>
+    <span class="material-symbols-outlined notranslate">menu_open</span>
+    <a href="#" id="nav-playground">Playground</a>
+    <a href="#" id="nav-history">History</a>
+    <button class="collapse-btn" aria-label="Collapse navigation menu"><span class="material-symbols-outlined notranslate">chevron_left</span></button>
+    <div class="notranslate" id="keep-notranslate">Run settings</div>
+  </nav>
+
+  <section>
+    <h1 id="headline">Chat with Gemini 4 Argon</h1>
+    <p class="subtitle">Ask, reason, and build. Start with a prompt or remix an app from the gallery.</p>
+    <button class="run-btn" title="Run settings" aria-label="Run settings">Run</button>
+    <div class="unlock" id="unlock">Unlock Gemini 4 Argon</div>
+  </section>
+
+  <ms-prompt-renderer>
+    <textarea placeholder="Start typing a prompt to see what our models can do" aria-label="Enter a prompt"></textarea>
+    <button class="tools-btn" aria-label="Open tools menu">Tools</button>
+  </ms-prompt-renderer>
+
+  <mat-select aria-label="Thinking Level">
+    <span class="mat-mdc-select-value-text" id="select-value">Medium</span>
+  </mat-select>
+
+  <div class="token-count" id="token-count">1,024 tokens</div>
+  <div class="pricing" id="pricing">All context lengths • Input: $2.00 / Output: $10.00 through November 30, 2026</div>
+  <div class="acct" id="acct">Google Account: moon999 lai (laimoon666@gmail.com)</div>
+  <div class="ago" id="ago">3 minutes ago</div>
+  <span class="material-icons" id="icon">settings</span>
+  <span class="fake-icon" id="icon2">settings</span>
+
+  <pre><code id="code">Playground</code></pre>
+
+  <ms-chat-turn>
+    <div class="model">
+      <p id="chat-text">History</p>
+      <pre><code>Settings</code></pre>
+    </div>
+  </ms-chat-turn>
+
+  <div class="markdown-body" id="markdown">Playground</div>
+
+  <div id="shost"></div>
+  <div id="injected"></div>
+
+  <div id="rerender-wrap"><span id="rerender">Playground</span></div>
+
+  <pre id="aiz-probe"></pre>
+
+  <!-- 与 manifest.json 的 content_scripts 顺序保持一致：
+       这里直接同源加载真实脚本，用无头 Chrome 验证引擎与词典，不需要安装扩展 -->
+  <link rel="stylesheet" href="../src/content.css">
+  <script src="../src/dict/_common.js"></script>
+  <script src="../src/dict/playground.js"></script>
+  <script src="../src/dict/build.js"></script>
+  <script src="../src/dict/manage.js"></script>
+  <script src="../src/core/patterns.js"></script>
+  <script src="../src/core/engine.js"></script>
+  <script src="../src/core/boot.js"></script>
+
+<script>
+  // 1) 模拟 Angular 重渲染：把已翻译的文本改回英文
+  setTimeout(function () {
+    var el = document.getElementById('rerender');
+    if (el) el.textContent = 'Playground';
+  }, 900);
+
+  // 2) 模拟动态插入的新节点
+  setTimeout(function () {
+    var box = document.getElementById('injected');
+    var b = document.createElement('button');
+    b.textContent = 'Get code';
+    b.setAttribute('aria-label', 'Get code');
+    box.appendChild(b);
+  }, 1200);
+
+  // 3) 模拟 shadow DOM 组件
+  (function () {
+    var host = document.getElementById('shost');
+    var root = host.attachShadow({ mode: 'open' });
+    root.innerHTML = '<button id="sh-btn">Advanced settings</button>' +
+      '<span class="material-symbols-outlined notranslate">settings</span>';
+  })();
+
+  // 4) 自检探针：把最终 DOM 状态写进文档，供 --dump-dom 采集
+  setTimeout(function () {
+    var shadowBtn = document.getElementById('shost').shadowRoot.querySelector('#sh-btn');
+    var injectedBtn = document.querySelector('#injected button');
+    var probe = {
+      ready: document.documentElement.hasAttribute('data-aiz-ready'),
+      version: document.documentElement.getAttribute('data-aiz-version'),
+      markers: document.querySelectorAll('[data-aiz-zh]').length,
+      navPlayground: document.getElementById('nav-playground').textContent,
+      navHistory: document.getElementById('nav-history').textContent,
+      collapseAria: document.querySelector('.collapse-btn').getAttribute('aria-label'),
+      keptNotranslate: document.getElementById('keep-notranslate').textContent,
+      headline: document.getElementById('headline').textContent,
+      subtitle: document.querySelector('.subtitle').textContent,
+      runTitle: document.querySelector('.run-btn').getAttribute('title'),
+      runAria: document.querySelector('.run-btn').getAttribute('aria-label'),
+      unlock: document.getElementById('unlock').textContent,
+      placeholder: document.querySelector('textarea').getAttribute('placeholder'),
+      enterAria: document.querySelector('textarea').getAttribute('aria-label'),
+      toolsAria: document.querySelector('.tools-btn').getAttribute('aria-label'),
+      selectValue: document.getElementById('select-value').textContent,
+      tokens: document.getElementById('token-count').textContent,
+      pricing: document.getElementById('pricing').textContent,
+      account: document.getElementById('acct').textContent,
+      ago: document.getElementById('ago').textContent,
+      icon: document.getElementById('icon').textContent,
+      icon2: document.getElementById('icon2').textContent,
+      code: document.getElementById('code').textContent,
+      chatText: document.getElementById('chat-text').textContent,
+      markdown: document.getElementById('markdown').textContent,
+      rerendered: document.getElementById('rerender').textContent,
+      injected: injectedBtn ? injectedBtn.textContent : null,
+      injectedAria: injectedBtn ? injectedBtn.getAttribute('aria-label') : null,
+      shadowText: shadowBtn ? shadowBtn.textContent : null,
+      title: document.title
+    };
+    document.getElementById('aiz-probe').textContent = JSON.stringify(probe);
+  }, 3000);
+</script>
+</body>
+</html>
