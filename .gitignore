@@ -3,6 +3,10 @@ dist/
 *.zip
 *.crx
 
+# CI 工作流：当前 GitHub token 无 workflow 权限，暂不上传；
+# 授权后可运行 `git rm -r --cached .github` 并移除本段后重新提交
+.github/
+
 # 勘察抓包与调研中间数据
 recon/
 
