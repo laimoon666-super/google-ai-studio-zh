@@ -7,7 +7,9 @@
   'use strict';
   const D = (window.__AIZ_DICT__ = window.__AIZ_DICT__ || {});
 
-  Object.assign(D, {
+  const S = (window.__AIZ_DICT_SOURCE__ = window.__AIZ_DICT_SOURCE__ || {});
+
+  const PART = {
     /* ---------- 无障碍 / 骨架 ---------- */
     "Skip to main content": "跳到主要内容",
     "Collapse navigation menu": "收起导航菜单",
@@ -237,6 +239,27 @@
     "Model card": "模型卡",
     "Input:": "输入：",
     "Output:": "输出：",
+    "Untitled prompt": "未命名提示词",
+    "Edit prompt title and description": "编辑提示词标题与描述",
+    "This model requires a paid API key to use. Please select an API key.": "此模型需要付费 API 密钥才能使用，请选择一个 API 密钥。",
+    "Up to 1,048,576. Responses beyond 32,768 tokens continue automatically in multiple parts, so they take longer.": "最高支持 1,048,576 个 Token。超过 32,768 个 Token 的回复会自动分成多个部分继续生成，因此耗时更长。",
+    "tokens": "个 Token",
+    "token": "个 Token",
+
+    /* ---------- 模型卡 / 向导 / 表格（1.1 补词） ---------- */
+    "Agent": "智能体",
+    "Text in": "文本输入",
+    "Audio out": "音频输出",
+    "Image in": "图片输入",
+    "Image out": "图片输出",
+    "Video in": "视频输入",
+    "Video out": "视频输出",
+    "Updated": "更新时间",
+    "Instructions are saved in local storage.": "指令保存在本地存储中。",
+    "local storage": "本地存储",
+    "Link a paid API key": "关联付费 API 密钥",
+    "paid API key": "付费 API 密钥",
+    "+ Create new instruction": "+ 创建新指令",
 
     /* ---------- 模型 / 参数（保持技术术语） ---------- */
     "Model": "模型",
@@ -250,5 +273,9 @@
     "Prompt": "提示词",
     "System prompt": "系统提示词",
     "Token count": "Token 计数"
+  };
+  Object.assign(D, PART);
+  Object.keys(PART).forEach(function (key) {
+    if (!(key in S)) S[key] = 'common';
   });
 })();

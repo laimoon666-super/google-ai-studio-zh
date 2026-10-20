@@ -17,7 +17,7 @@ import zipfile
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DIST = os.path.join(ROOT, 'dist')
 
-INCLUDE = ['manifest.json', 'README.md', 'icons', 'src']
+INCLUDE = ['manifest.json', 'README.md', 'LICENSE', 'CHANGELOG.md', 'icons', 'src', 'screenshots']
 EXCLUDE_DIRS = {'dist', 'recon', 'docs', 'scripts', 'fixtures', 'node_modules', '.git', '__pycache__'}
 EXCLUDE_FILES = {'CONTRACT.md', '.gitignore', '.DS_Store', 'Thumbs.db'}
 

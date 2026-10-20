@@ -44,9 +44,15 @@ google-ai-studio-zh/
 /* 分卷：Playground（对话实验室 / 运行设置） */
 (function () {
   const D = (window.__AIZ_DICT__ = window.__AIZ_DICT__ || {});
-  Object.assign(D, {
+  const S = (window.__AIZ_DICT_SOURCE__ = window.__AIZ_DICT_SOURCE__ || {});
+
+  const PART = {
     "Playground": "对话实验室",
     "Run settings": "运行设置"
+  };
+  Object.assign(D, PART);
+  Object.keys(PART).forEach(function (key) {
+    if (!(key in S)) S[key] = 'playground'; // 分卷名：common/playground/build/manage
   });
 })();
 ```
@@ -93,6 +99,9 @@ google-ai-studio-zh/
 { type: 'AIZ_RETRANSLATE' }-> { ok:true, translated }
 { type: 'AIZ_CLEAR_MARKS' }-> { ok:true }   // 还原为英文，便于对比
 { type: 'AIZ_APPLY_SETTINGS' } -> { ok:true }
+{ type: 'AIZ_GET_SNAPSHOT' } -> { ok:true, source:'content', version,
+  volumes:{common,playground,build,manage,custom,builtin}（显示名）,
+  dict:[{en, zh, volume}], patterns:[{src, to, note, sample}], generatedAt }
 ```
 
 **UI 页面可用 `chrome.runtime.sendMessage`**

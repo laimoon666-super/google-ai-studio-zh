@@ -13,7 +13,9 @@
   'use strict';
   const D = (window.__AIZ_DICT__ = window.__AIZ_DICT__ || {});
 
-  Object.assign(D, {
+  const S = (window.__AIZ_DICT_SOURCE__ = window.__AIZ_DICT_SOURCE__ || {});
+
+  const PART = {
     /* ---------- 1. 设置菜单与 User Settings 弹窗 ---------- */
     "User settings": "用户设置",
     "User Settings": "用户设置",
@@ -247,5 +249,9 @@
     "No keys found": "未找到密钥",
     "No logs found": "未找到日志",
     "No datasets found": "未找到数据集"
+  };
+  Object.assign(D, PART);
+  Object.keys(PART).forEach(function (key) {
+    if (!(key in S)) S[key] = 'manage';
   });
 })();

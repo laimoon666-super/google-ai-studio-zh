@@ -23,7 +23,9 @@
   'use strict';
   const D = (window.__AIZ_DICT__ = window.__AIZ_DICT__ || {});
 
-  Object.assign(D, {
+  const S = (window.__AIZ_DICT_SOURCE__ = window.__AIZ_DICT_SOURCE__ || {});
+
+  const PART = {
     /* ============================================================
      * 1. 左侧导航与账号升级区 (Navbar & Account & Promo)
      * ============================================================ */
@@ -231,7 +233,7 @@
     "Select primary model": "选择主模型",
     "Select Antigravity agent harness model": "选择 Antigravity Agent 测试架构模型",
     "Model carousel": "模型轮播",
-    "Search for a model or agent": "搜索模型或 Agent",
+    "Search for a model or agent": "搜索模型或智能体",
     "Clear search query": "清除搜索词",
     "Clear search": "清除搜索",
     "View \"All\" category": "查看“全部”分类",
@@ -284,5 +286,9 @@
     "API pricing per 1M tokens. Audio tokens correspond to 25 tokens per second of audio.\nUsage in AI Studio UI is free of charge when no API key is selected": "每 100 万 Token 的 API 定价。音频 Token 相当于每秒音频消耗 25 个 Token。\n未选择 API 密钥时，在 AI Studio 界面中使用完全免费",
     "API pricing per 1M tokens. Audio tokens correspond to 25 tokens per second of audio. Equivalent to $0.0368 per minute.\nUsage in AI Studio UI is free of charge when no API key is selected": "每 100 万 Token 的 API 定价。音频 Token 相当于每秒音频消耗 25 个 Token，约合每分钟 0.0368 美元。\n未选择 API 密钥时，在 AI Studio 界面中使用完全免费",
     "Video output price is equivalent to $0.10 per second of video (720p)": "视频输出价格相当于每秒视频 0.10 美元（720p）"
+  };
+  Object.assign(D, PART);
+  Object.keys(PART).forEach(function (key) {
+    if (!(key in S)) S[key] = 'playground';
   });
 })();

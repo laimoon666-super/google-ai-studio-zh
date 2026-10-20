@@ -217,18 +217,45 @@
             return false;
           }
 
+          if (msg.type === 'AIZ_GET_SNAPSHOT') {
+            // 供设置页「词典管理」展示内置词条及其来源分卷
+            var D = window.__AIZ_DICT__ && typeof window.__AIZ_DICT__ === 'object' ? window.__AIZ_DICT__ : {};
+            var S = window.__AIZ_DICT_SOURCE__ && typeof window.__AIZ_DICT_SOURCE__ === 'object' ? window.__AIZ_DICT_SOURCE__ : {};
+            var P = window.__AIZ_PATTERNS__ || [];
+            sendResponse({
+              ok: true,
+              source: 'content',
+              version: VERSION,
+              volumes: {
+                common: '_common.js · 通用',
+                playground: 'playground.js · 对话实验室',
+                build: 'build.js · 构建',
+                manage: 'manage.js · 管理',
+                custom: '自定义（本地）',
+                builtin: '内置词典'
+              },
+              dict: Object.keys(D).map(function (en) {
+                return { en: en, zh: D[en], volume: S[en] || 'builtin' };
+              }),
+              patterns: P.map(function (p) {
+                return {
+                  src: p.re && p.re.source ? p.re.source : '',
+                  to: typeof p.to === 'function' ? '[dynamic]' : String(p.to == null ? '' : p.to),
+                  note: p.note || '',
+                  sample: p.sample || ''
+                };
+              }),
+              generatedAt: Date.now()
+            });
+            return false;
+          }
+
           if (msg.type === 'AIZ_APPLY_SETTINGS') {
             safeGet([KEY.settings], function (res) {
               ENGINE.setSettings(mergeSettings(res[KEY.settings]));
               sendResponse({ ok: true });
             });
             return true;
-          }
-
-          if (msg.type === 'AIZ_GET_ORIGINALS') {
-            // 供设置页调试用：返回当前页命中的原文集合
-            sendResponse({ ok: true, originals: Array.from(ENGINE.stats().unmatched || []) });
-            return false;
           }
 
           return false;

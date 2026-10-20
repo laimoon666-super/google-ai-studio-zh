@@ -14,7 +14,9 @@
   'use strict';
   const D = (window.__AIZ_DICT__ = window.__AIZ_DICT__ || {});
 
-  Object.assign(D, {
+  const S = (window.__AIZ_DICT_SOURCE__ = window.__AIZ_DICT_SOURCE__ || {});
+
+  const PART = {
     /* ============================================================
      * 1. /apps (New app 入口页 & 模板 & 模式)
      * ============================================================ */
@@ -341,5 +343,9 @@
     "Blocked dormant keys": "被屏蔽的休眠密钥",
     "Migrate to an auth key": "迁移至认证密钥",
     "Limitations": "限制与约束"
+  };
+  Object.assign(D, PART);
+  Object.keys(PART).forEach(function (key) {
+    if (!(key in S)) S[key] = 'build';
   });
 })();

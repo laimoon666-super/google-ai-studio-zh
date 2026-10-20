@@ -10,7 +10,7 @@
 
 <p align="center">
   <img src="https://img.shields.io/badge/Manifest_V3-Chrome_102+-blue.svg" alt="Manifest V3" />
-  <img src="https://img.shields.io/badge/Version-1.0.0-green.svg" alt="Version 1.0.0" />
+  <img src="https://img.shields.io/badge/Version-1.1.0-green.svg" alt="Version 1.1.0" />
   <img src="https://img.shields.io/badge/Security-Zero_Network_Requests-brightgreen.svg" alt="Zero Network" />
   <img src="https://img.shields.io/badge/License-MIT-orange.svg" alt="License" />
 </p>
@@ -21,16 +21,17 @@
 1. [项目简介](#一项目简介)
 2. [核心功能特色 (12 大亮点)](#二核心功能特色-12-大亮点)
 3. [安装指南 (Chrome / Edge)](#三安装指南-chrome--edge)
-4. [使用教程与交互界面](#四使用教程与交互界面)
+4. [效果预览](#四效果预览)
+5. [使用教程与交互界面](#五使用教程与交互界面)
    - [快捷键一览](#1-快捷键一览)
    - [工具栏弹窗 (Popup) 功能详解](#2-工具栏弹窗-popup-功能详解)
    - [高级选项页 (Options) 七大分区详解](#3-高级选项页-options-七大分区详解)
-5. [工作原理与技术架构](#五工作原理与技术架构)
-6. [完整项目目录结构树](#六完整项目目录结构树)
-7. [已知限制与兼容性维护](#七已知限制与兼容性维护)
-8. [隐私安全声明与权限逐条解释](#八隐私安全声明与权限逐条解释)
-9. [常见问题解答 (FAQ ≥8条)](#九常见问题解答-faq)
-10. [免责声明](#十免责声明)
+6. [工作原理与技术架构](#六工作原理与技术架构)
+7. [完整项目目录结构树](#七完整项目目录结构树)
+8. [已知限制与兼容性维护](#八已知限制与兼容性维护)
+9. [隐私安全声明与权限逐条解释](#九隐私安全声明与权限逐条解释)
+10. [常见问题解答 (FAQ ≥8条)](#十常见问题解答-faq)
+11. [免责声明](#十一免责声明)
 
 ---
 
@@ -82,13 +83,25 @@
 
 ### 3.2 离线 Zip 包安装
 
-1. 从项目 Release 页面下载打包好的 `google-ai-studio-zh-1.0.0.zip`。
+1. 从项目 Release 页面下载打包好的 `google-ai-studio-zh-1.1.0.zip`。
 2. 解压到一个固定文件夹中。
 3. 按照上述【3.1】中的步骤，在“开发者模式”下点击“加载已解压的扩展程序”并选择解压后的文件夹即可。
 
 ---
 
-## 四、使用教程与交互界面
+## 四、效果预览
+
+| 工具栏弹窗 | 设置页（词典管理） |
+| :---: | :---: |
+| ![popup](screenshots/popup.png) | ![options](screenshots/options.png) |
+
+安装后，AI Studio 的界面会从英文变成这样（下方为无头浏览器验收夹具的实际渲染结果，代码块、图标与聊天内容保持英文原样）：
+
+![汉化效果](screenshots/effect.png)
+
+---
+
+## 五、使用教程与交互界面
 
 ### 1. 快捷键一览
 
@@ -133,7 +146,7 @@
 
 ---
 
-## 五、工作原理与技术架构
+## 六、工作原理与技术架构
 
 ```
 [ 用户访问 aistudio.google.com ]
@@ -169,18 +182,23 @@
 
 ---
 
-## 六、完整项目目录结构树
+## 七、完整项目目录结构树
 
 ```
 google-ai-studio-zh/
 ├── manifest.json               # Chrome 扩展 MV3 配置文件（定义名称、权限、快捷键与注入脚本）
 ├── README.md                   # 项目主文档（功能介绍、安装指引、使用手册、FAQ）
+├── LICENSE                     # MIT 开源许可证
+├── CHANGELOG.md                # 版本更新日志
 ├── CONTRACT.md                 # 团队协作契约规范（接口约定、词典规范、术语与质量红线）
 ├── .gitignore                  # Git 忽略配置（排除构建产物、勘察数据、系统临时文件）
+├── .github/workflows/ci.yml    # GitHub Actions：无头 Chrome 夹具端到端测试
+├── screenshots/                # README 用效果截图（弹窗 / 设置页 / 汉化效果）
 ├── docs/                       # 体系化设计与使用文档
 │   ├── 术语表.md               # 70+ 核心专业中英术语对照与选词依据
 │   ├── 维护指南.md             # 开发者维护指南（新文案勘察 SOP、正则规范、SPA 避坑要点）
-│   └── 使用说明.md             # 面向普通用户的图文式保姆级操作指南
+│   ├── 使用说明.md             # 面向普通用户的图文式保姆级操作指南
+│   └── RELEASE_NOTES_v1.0.0.md # v1.0.0 发布说明
 ├── icons/                      # 扩展全规格图标资产（高质量圆角渐变方块 + 纯白“中”字）
 │   ├── icon16.png              # 16x16 像素图标（标签页与右键菜单）
 │   ├── icon32.png              # 32x32 像素图标（Windows 高分屏任务栏）
@@ -188,29 +206,30 @@ google-ai-studio-zh/
 │   └── icon128.png             # 128x128 像素图标（Chrome Web Store 与安装引导）
 ├── scripts/                    # 自动化开发运维脚本
 │   ├── gen-icons.py            # 基于 Pillow 自动渲染生成 4 套图标的超采样脚本
-│   ├── pack.ps1                # 自动化过滤排除并打 Zip 包的 PowerShell 构建脚本
+│   ├── pack.ps1                # PowerShell 打包脚本（zip 内路径为反斜杠，Windows 可用）
 │   ├── pack.py                 # 跨平台打包脚本（zip 内路径统一为 /，推荐使用）
-│   ├── e2e-test.mjs            # 无头浏览器端到端验收（静态校验 + 29 项翻译断言）
-│   ├── e2e-extension.mjs       # 真实扩展加载验收（CDP + 离屏 Chrome/Edge）
-│   └── dict-audit.mjs          # 词典结构体检与真实文案覆盖率审计
-├── dist/                       # 打包产物输出目录
-│   └── google-ai-studio-zh-1.0.0.zip # 生产就绪扩展包
-├── recon/                      # 勘察抓包与中间调研证据池
+│   ├── e2e-test.mjs            # 无头浏览器端到端验收（静态校验 + 30 项翻译断言）
+│   ├── e2e-extension.mjs       # 真实扩展加载验收（CDP + 离屏 Chrome/Edge，20 项断言）
+│   ├── dict-audit.mjs          # 词典结构体检与真实文案覆盖率审计
+│   └── dict-source.mjs         # 词典分卷溯源迁移脚本（一次性工具）
+├── dist/                       # 打包产物输出目录（Git 忽略）
+│   └── google-ai-studio-zh-1.1.0.zip # 生产就绪扩展包
+├── recon/                      # 勘察抓包与中间调研证据池（Git 忽略）
 │   └── *.dump.json             # 真实 DOM 文本抓取记录与快照
 ├── fixtures/                   # 测试用例与离线 DOM 样本
 │   └── preview.html            # 复刻 AI Studio DOM 的验收夹具（图标/重渲染/Shadow DOM）
 └── src/                        # 扩展源代码核心目录
-    ├── background.js           # Service Worker 后台线程（管理 DNR 网络规则与快捷键响应）
+    ├── background.js           # Service Worker 后台线程（DNR 规则、徽标、快捷键、SNAPSHOT 转发）
     ├── content.css             # 页面注入样式（译文高亮底纹、Tooltip 气泡样式）
     ├── core/                   # 翻译引擎内核
-    │   ├── engine.js           # 核心翻译引擎（TreeWalker 遍历、分词匹配、跳过策略）
-    │   ├── patterns.js         # 动态变量正则匹配与转换规则池
-    │   └── boot.js             # 启动入口、MutationObserver 挂载与 storage 监听
-    ├── dict/                   # 结构化词典分卷
+    │   ├── engine.js           # 核心翻译引擎（TreeWalker 遍历、精确匹配、跳过策略）
+    │   ├── patterns.js         # 动态变量正则匹配与转换规则池（78 条）
+    │   └── boot.js             # 启动入口、MutationObserver 挂载、storage 监听与消息应答
+    ├── dict/                   # 结构化词典分卷（851 条去重词条，含来源分卷溯源）
     │   ├── _common.js          # 高频通用词条（操作动词、通用标头）
     │   ├── playground.js       # 对话实验室及调参面板专有词库
-    │   ├── build.js            # 提示词工程、微调、应用管理词库
-    │   └── manage.js           # API 密钥控制台、账单、用量专有词库
+    │   ├── build.js            # 构建、应用广场、资源库与文档词库
+    │   └── manage.js           # 设置、账号、API 控制台词库
     ├── popup/                  # 工具栏弹出面板
     │   ├── popup.html          # 弹窗结构
     │   ├── popup.js            # 弹窗交互与统计信息同步
@@ -226,7 +245,7 @@ google-ai-studio-zh/
 
 ---
 
-## 七、已知限制与兼容性维护
+## 八、已知限制与兼容性维护
 
 1. **SPA 懒加载延迟**：对于数千行超长历史记录或深层抽屉弹窗，由于 Angular 采用虚拟滚动（Virtual Scroll），新滑入可视区域的元素可能存在毫秒级的微小延迟，随后会自动瞬时完成汉化。
 2. **Material Symbols 保护**：Google 界面将部分图标作为文本渲染（例如 `close`、`search`）。本扩展严格对这些标签进行跳过防护；极少数非标准标签的图标若被误汉化，可通过 Options 中的黑名单选择器将其加入排除。
@@ -236,7 +255,7 @@ google-ai-studio-zh/
 
 ---
 
-## 八、隐私安全声明与权限逐条解释
+## 九、隐私安全声明与权限逐条解释
 
 本扩展遵循严格的隐私保护与最小权限原则，代码 100% 透明开源。
 
@@ -253,7 +272,7 @@ google-ai-studio-zh/
 
 ---
 
-## 九、常见问题解答 (FAQ)
+## 十、常见问题解答 (FAQ)
 
 ### Q1: 扩展安全吗？会不会泄露我的 API Key 或 Prompt？
 **答：绝对安全！** 本扩展采用 100% 离线纯前端架构，所有词典与引擎均内置在本地扩展包内。我们严守安全底线，对 Prompt 输入框与 API Key 显示区域做了硬隔离；且扩展本身没有申请任何外部网络连接权限，物理上无法向任何外部服务器发送数据。
@@ -284,7 +303,7 @@ google-ai-studio-zh/
 
 ---
 
-## 十、免责声明
+## 十一、免责声明
 
 1. **非官方产品**：本扩展程序为独立第三方开源项目，由 AI 开发者社区爱好者共同维护，与 Google LLC、Alphabet Inc. 没有任何形式的隶属、赞助、授权或官方关联。
 2. **商标权属**：“Google”、“Gemini”、“AI Studio”、“Imagen”、“Veo”以及相关商标、LOGO 和视觉标识均为 Google LLC 或其关联公司的注册商标与合法财产。本插件仅用于提升个人开发者的界面使用体验，不主张任何相关商标权利。

@@ -72,6 +72,14 @@ function prepare() {
   }
   writeFileSync(manifestPath, JSON.stringify(manifest, null, 2), 'utf8');
 
+  // background 里查询/转发的 AI Studio 域名也要替换成本地测试域名
+  const bgPath = path.join(ext, 'src', 'background.js');
+  if (existsSync(bgPath)) {
+    const bg = readFileSync(bgPath, 'utf8')
+      .replace(/https:\/\/aistudio\.google\.com\/\*/g, `http://127.0.0.1:${PORT}/*`);
+    writeFileSync(bgPath, bg, 'utf8');
+  }
+
   // 生成不含内联脚本的 fixture（只能靠扩展翻译）
   const src = readFileSync(path.join(ROOT, 'fixtures', 'preview.html'), 'utf8');
   const stripped = src.replace(
@@ -240,6 +248,14 @@ async function main() {
           if (info.webSocketDebuggerUrl) {
             const s2 = cdp(info.webSocketDebuggerUrl);
             await s2.ready;
+            await s2.send('Page.enable');
+            if (name === 'popup') {
+              // 模拟真实弹窗视口，截图更接近实际效果
+              await s2.send('Emulation.setDeviceMetricsOverride', {
+                width: 400, height: 650, deviceScaleFactor: 2, mobile: false
+              });
+              await sleep(400);
+            }
             await sleep(900);
             const title = await evaluate(s2, 'document.title');
             const errors = await evaluate(s2, 'window.__uiErrors || []');
@@ -261,12 +277,44 @@ async function main() {
               add('optionsPatterns', Number(profile.patterns) > 50, `options 加载动态规则（${profile.patterns} 条）`, profile.patterns);
               add('optionsSections', Number(profile.sections) === 7, `options 七个分区（${profile.sections} 个 section）`, profile.sections);
               add('optionsStorage', profile.hasStorage === true, 'options 处于真实扩展存储环境', profile.hasStorage);
+
+              // AIZ_GET_SNAPSHOT 全链路：options → background 转发 → content script → 带分卷的词典快照
+              const snapText = await evaluate(
+                s2,
+                `(async () => {
+                  try {
+                    const s = await window.AIZ.getSnapshot();
+                    return JSON.stringify({
+                      ok: !!(s && s.ok),
+                      dict: s && Array.isArray(s.dict) ? s.dict.length : 0,
+                      volumeSample: s && Array.isArray(s.dict) ? s.dict.slice(0, 5).map((e) => e.volume).filter(Boolean).join(',') : '',
+                      volumes: s && s.volumes ? Object.keys(s.volumes).length : 0
+                    });
+                  } catch (e) {
+                    return JSON.stringify({ ok: false, err: String(e) });
+                  }
+                })()`
+              );
+              const snap = JSON.parse(snapText || '{}');
+              add('optionsSnapshot', snap.ok === true && Number(snap.dict) > 800, `AIZ_GET_SNAPSHOT 全链路（${snap.dict} 条，含分卷）`, snap);
+              add('optionsVolume', String(snap.volumeSample || '').includes('common'), '词典分卷溯源（volume 字段）', snap.volumeSample);
             } else {
               add('popupStorage', profile.hasStorage === true, 'popup 处于真实扩展存储环境', profile.hasStorage);
               add('popupSettings', !!(profile.settings && profile.settings.enabled === true), 'popup 读到默认设置（enabled=true）', profile.settings);
             }
 
             if (Array.isArray(errors) && errors.length) add(`${name}Errors`, false, `${name} 控制台错误`, errors.slice(0, 3));
+
+            // 真实现实环境截图（无 mock 横幅），供 README 使用
+            try {
+              const shot = await s2.send('Page.captureScreenshot', { format: 'png' });
+              mkdirSync(path.join(ROOT, 'screenshots'), { recursive: true });
+              writeFileSync(path.join(ROOT, 'screenshots', name + '.png'), Buffer.from(shot.data, 'base64'));
+              log(`已保存 ${name} 截图：screenshots/${name}.png`);
+            } catch (e) {
+              log(`${name} 截图失败：` + e.message);
+            }
+
             s2.close();
           } else {
             add(`${name}Page`, false, `${name} 页面创建失败`, info);

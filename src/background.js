@@ -166,6 +166,25 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
     return false;
   }
 
+  if (msg.type === 'AIZ_GET_SNAPSHOT') {
+    // 转发给某个已打开的 AI Studio 标签页上的内容脚本
+    chrome.tabs.query({ url: 'https://aistudio.google.com/*' }, async (tabs) => {
+      for (const tab of tabs) {
+        try {
+          const res = await chrome.tabs.sendMessage(tab.id, { type: 'AIZ_GET_SNAPSHOT' });
+          if (res && res.ok) {
+            sendResponse(res);
+            return;
+          }
+        } catch (e) {
+          /* 该标签页内容脚本不可用，尝试下一个 */
+        }
+      }
+      sendResponse({ ok: false, reason: 'no-content-tab' });
+    });
+    return true;
+  }
+
   if (msg.type === 'AIZ_RESET_ALL') {
     chrome.storage.local.clear(() => {
       chrome.storage.local.set({ [KEY.schema]: 1, [KEY.settings]: DEFAULT_SETTINGS, [KEY.custom]: {} });

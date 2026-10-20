@@ -158,6 +158,7 @@ function runFixture() {
     '--disable-sync',
     '--disable-features=Translate',
     '--lang=en-US',
+    ...(process.env.CHROME_ARGS || '').split(/\s+/).filter(Boolean),
     `--user-data-dir=${profile}`,
     '--virtual-time-budget=9000',
     '--dump-dom',
